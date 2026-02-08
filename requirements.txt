@@ -5,3 +5,8 @@ pymupdf
 sentence-transformers  #embedding model
 chromadb
 langchain-chroma
+langchain-huggingface 
+huggingface_hub
+python-dotenv
+streamlit
+nbimporter
