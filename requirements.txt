@@ -3,3 +3,5 @@ langchain_core
 langchain-community
 pymupdf
 sentence-transformers  #embedding model
+chromadb
+langchain-chroma
