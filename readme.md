@@ -1,4 +1,4 @@
-<img width="2000" height="1126" alt="image" src="https://github.com/user-attachments/assets/63fe836b-9d0b-4375-9206-082198d26aa9" /># Mini RAG System Documentation
+# Mini RAG System Documentation
 
 Welcome to the documentation for your Mini RAG (Retrieval-Augmented Generation) System for Document Question Answering. This solution implements a robust, production-aligned pipeline that combines semantic retrieval, chunking, and LLM-based reasoning, with a strict focus on grounded, explainable answers.
 
