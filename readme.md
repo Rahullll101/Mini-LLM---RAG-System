@@ -67,7 +67,7 @@ flowchart TD
 | `Loader.py`         | Loads PDFs from a given directory                              |
 | `chunk.py`          | Splits documents into semantically meaningful chunks           |
 | `embeding_db.py`    | Embedding model loader and vector DB creation                  |
-| `llm.py`            | Model evaluation and LLM interaction logic                     |
+| `llm.py`            | Text Generation for the retrieved context                      |
 | `main.py`           | Streamlit application entry point                              |
 | `Rag_app.py`        | RAG prompt and answer-query function                           |
 
@@ -240,89 +240,50 @@ def create_vector_db(
 
 # 🧠 llm.py
 
-Performs model evaluation and interacts with the HuggingFace-based language model for explanation generation.
+ LLm model interacts with the HuggingFace-based language model for explanation generation.
 
 ```python
+# llm.py
 import os
-import json
 from dotenv import load_dotenv
-from langchain.schema import HumanMessage
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from train_ml import train_ml
-from train_mlp import train_mlp
 
-# Load ENV
 load_dotenv()
-HF_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-if not HF_TOKEN:
-    raise ValueError("HUGGINGFACEHUB_API_TOKEN not found in .env")
 
-# Get REAL metrics
-ml_metrics = train_ml()
-dl_metrics = train_mlp()
+HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-# Select final model (F1-based)
-if ml_metrics["f1"] >= dl_metrics["f1"]:
-    final_model = ml_metrics
-    selected_model = ml_metrics["model"]
-    comparison_text = (
-        "Random Forest achieved a higher F1-score than the MLP model."
-    )
-else:
-    final_model = dl_metrics
-    selected_model = dl_metrics["model"]
-    comparison_text = (
-        "MLP achieved a higher F1-score than the Random Forest model."
-    )
 
-# Build TEXT INPUT (PROMPT)
-prompt = f"""
-You are an AI assistant explaining a loan approval decision.
-Model Evaluation Results:
-- Random Forest F1-score: {ml_metrics['f1']}
-- MLP (ANN) F1-score: {dl_metrics['f1']}
-Decision Rule: The final model is selected strictly based on F1-score.
-Selected Model: {selected_model}
-Return ONLY valid JSON in the following format:
-{{
-  "prediction": "Loan Approved or Loan Rejected",
-  "confidence": "{final_model['confidence']}",
-  "ml_vs_dl_comparison": "{comparison_text}",
-  "llm_explanation": "Clear, non-technical explanation"
-}}
-"""
-
-# REAL LLM (LangChain + HF)
-endpoint = HuggingFaceEndpoint(
-    repo_id="openai/gpt-oss-120b",
-    task="conversational",
-    huggingfacehub_api_token=HF_TOKEN,
+def load_llm(
+    model_id= "openai/gpt-oss-120b",
     max_new_tokens=300,
     temperature=0.2,
-)
-chat_llm = ChatHuggingFace(llm=endpoint)
-response = chat_llm.invoke([HumanMessage(content=prompt)])
-raw_text = response.content
+):
+    if not HUGGINGFACE_API_TOKEN:
+        raise ValueError("HUGGINGFACEHUB_API_TOKEN not found in .env")
 
-# Parse JSON
-json_start = raw_text.find("{")
-json_end = raw_text.rfind("}") + 1
-llm_output = json.loads(raw_text[json_start:json_end])
+    endpoint = HuggingFaceEndpoint(
+        repo_id=model_id,
+        task="conversational",
+        huggingfacehub_api_token=HUGGINGFACE_API_TOKEN,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+    )
 
-# Save Output
-os.makedirs("../outputs", exist_ok=True)
-with open("../outputs/final_output.json", "w") as f:
-    json.dump(llm_output, f, indent=4)
+    
+    chat_llm = ChatHuggingFace(llm=endpoint)
 
-print("REAL metrics + REAL LLM used")
-print(json.dumps(llm_output, indent=4))
+    return chat_llm
 ```
 
 - **Purpose:** 
-  - Runs both ML and DL models, compares F1 scores, and prompts the LLM to generate a JSON-formatted explanation.
-  - Uses the HuggingFace API for the LLM.
+  - Loads the Large Language Model used as the core reasoning engine in the RAG system
+  - Generates natural language answers based on retrieved context
+    
 - **Notable:** 
-  - Designed for transparent, explainable outputs.
+  - Reads the Hugging Face API token securely from environment variables
+  - Connects to the openai/gpt-oss-120b model via HuggingFaceEndpoint
+  - Uses ChatHuggingFace wrapper to enable conversational response handling
+  - Allows control over output using temperature and max_new_tokens parameters
 
 ---
 
