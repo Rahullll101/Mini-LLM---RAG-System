@@ -1,0 +1,238 @@
+## Questions for RAG
+
+📘 1️⃣ Transformer Paper — Attention Is All You Need
+
+What is the main idea behind the Transformer model?
+→ A neural network architecture based entirely on self-attention without using recurrence or convolution.
+
+Why does the Transformer remove recurrence and convolutions?
+→ To allow parallel computation and better modeling of long-range dependencies.
+
+What are the two main components of the Transformer architecture?
+→ Encoder and Decoder stacks.
+
+What is self-attention in the Transformer?
+→ A mechanism that allows each word to attend to all other words in the sequence when forming representations.
+
+What is multi-head attention and why is it used?
+→ Multiple attention mechanisms run in parallel to capture different types of relationships.
+
+How does the Transformer handle positional information?
+→ Using positional encodings added to input embeddings.
+
+What tasks were used to evaluate the Transformer?
+→ Machine translation tasks (e.g., English–German, English–French).
+
+What performance metric was used in translation experiments?
+→ BLEU score.
+
+How many layers are used in the encoder and decoder stacks?
+→ 6 layers each.
+
+What advantages does the Transformer have over RNNs?
+→ Faster training, better parallelization, improved long-distance dependency handling.
+
+📘 2️⃣ Object Detection with Deep Learning
+
+What is object detection in computer vision?
+→ Identifying and locating objects in an image using bounding boxes and labels.
+
+What are the three stages of traditional object detection?
+→ Region proposal, feature extraction, and classification.
+
+Why did deep learning improve object detection performance?
+→ CNNs automatically learn powerful hierarchical features.
+
+What is R-CNN?
+→ A model that uses region proposals + CNN feature extraction + SVM classification.
+
+What improvement does Fast R-CNN bring over R-CNN?
+→ Shares convolution computations → faster training and testing.
+
+What is Faster R-CNN’s main contribution?
+→ Introduced the Region Proposal Network (RPN).
+
+How is YOLO different from R-CNN methods?
+→ YOLO performs detection in a single pass (real-time).
+
+What are region proposal methods?
+→ Techniques to suggest candidate object regions before classification.
+
+What are regression-based detection methods?
+→ Methods that directly predict bounding box coordinates and class probabilities.
+
+What applications of object detection are mentioned?
+→ Face detection, pedestrian detection, autonomous driving, surveillance.
+
+📘 3️⃣ Air Pollution Health Advisory (Govt.)
+
+What is the purpose of this health advisory document?
+→ To guide the health sector and public on managing air pollution risks.
+
+What health problems are linked to air pollution?
+→ Respiratory diseases, heart disease, asthma, lung infections.
+
+Who are considered vulnerable populations?
+→ Children, elderly, pregnant women, and people with existing illnesses.
+
+What is AQI and why is it important?
+→ Air Quality Index; indicates pollution level and health risk.
+
+What role does the health sector play?
+→ Awareness, preparedness, surveillance, treatment.
+
+What preventive measures are suggested for the public?
+→ Staying indoors, masks, avoiding outdoor activity during high pollution.
+
+How can states obtain air quality information?
+→ From CPCB/state monitoring systems.
+
+What guidance is given for school children?
+→ Limit outdoor activity during high pollution days.
+
+What are the recommendations for healthcare preparedness?
+→ Training staff, ensuring medicine availability, monitoring cases.
+
+What does the advisory suggest during high pollution days?
+→ Reduce exposure and increase protective measures.
+
+📘 4️⃣ Machine Learning Basics
+
+What is machine learning?
+→ A field where systems learn from data to make predictions or decisions.
+
+What are the four main types of machine learning?
+→ Supervised, Unsupervised, Semi-supervised, Reinforcement learning.
+
+What is supervised learning?
+→ Learning using labeled data.
+
+What is unsupervised learning?
+→ Finding patterns in unlabeled data.
+
+What is reinforcement learning?
+→ Learning by trial and error with rewards.
+
+What is the difference between training and testing data?
+→ Training data builds the model; testing data evaluates it.
+
+What is overfitting?
+→ Model performs well on training data but poorly on new data.
+
+What is underfitting?
+→ Model is too simple to capture patterns.
+
+What is classification in ML?
+→ Predicting a category/label.
+
+Why is validation data used?
+→ To tune the model and avoid overfitting.
+
+📘 5️⃣ Mental Health in the Workplace (ILO)
+
+Why is mental health in the workplace important?
+→ It affects productivity, well-being, and economic costs.
+
+How do mental health problems affect productivity?
+→ Absenteeism, reduced performance.
+
+What are the economic costs of mental health issues?
+→ Treatment costs, lost productivity, disability benefits.
+
+What role does stigma play?
+→ Prevents employees from seeking help.
+
+How can workplaces help in prevention?
+→ Awareness, early identification, supportive policies.
+
+What barriers do affected people face?
+→ Stigma, discrimination, lack of support.
+
+How can employers support employees?
+→ Flexible policies, accommodations, mental health programs.
+
+What countries were studied?
+→ Finland, Germany, Poland, UK, USA.
+
+What is the role of legislation?
+→ Protects workers and ensures equal opportunities.
+
+Why is the workplace good for early identification?
+→ Regular interaction allows early detection of issues.
+
+📘 6️⃣ NASSCOM HR Policy Manual
+
+What are the normal working hours?
+→ 9:30 AM – 6:00 PM (Mon–Fri).
+
+How many earned leave days per year?
+→ 21 days.
+
+What is the maternity leave entitlement?
+→ 12 weeks.
+
+What is the rule for late coming?
+→ Arrival after 9:50 AM is considered late.
+
+Who approves international travel?
+→ The President of NASSCOM.
+
+What is the mobile reimbursement rule?
+→ Up to 80% of bill, max ₹2000/month (Grades 1–6).
+
+What is paternity leave eligibility?
+→ Male employees with 1 year service; 2 weeks leave.
+
+After how many years can a laptop be replaced?
+→ After 3.5 years.
+
+What happens if confidentiality is breached?
+→ Disciplinary action, possibly termination.
+
+What is the purpose of the induction policy?
+→ To familiarize new employees with org structure, policies, and role.
+
+
+## QUESTIONS FOR FAILING CASES
+# Out-of-Scope Failure Questions (General Knowledge)
+
+Who is the current CEO of OpenAI?
+
+What is the capital city of Canada?
+
+Who won the ICC Cricket World Cup in 2019?
+
+What is the formula for calculating compound interest?
+
+Explain how blockchain technology works.
+
+What is the latest version of Python?
+
+Who discovered gravity?
+
+What is the boiling point of gold?
+
+What is the GDP of India in 2023?
+
+Explain Kubernetes architecture.
+
+# Out-of-Scope (Looks Related but Actually Not in Your PDFs
+What dataset was used to train the Transformer model?
+
+What is the learning rate used in YOLOv8?
+
+What is the annual budget of NASSCOM?
+
+What is the salary of the President of NASSCOM?
+
+What percentage of global CO₂ emissions come from India?
+
+What is the clinical treatment protocol for asthma?
+
+What mental health therapy techniques are recommended by WHO?
+
+What hardware specifications were used to train the Transformer?
+
+What is the exact address of NASSCOM headquarters?
+
+What is the dropout rate used in Faster R-CNN?
